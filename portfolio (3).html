@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow:hidden;background:#4A7AB5;font-family:'Courier New',monospace}
-*{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24'%3E%3Cpath d='M0 0 L0 20 L5 15 L9 23 L12 22 L8 14 L14 14 Z' fill='white' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 0 0,auto}
+*{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24'%3E%3Cpath d='M0 0 L0 20 L5 15 L9 23 L12 22 L8 14 L14 14 Z' fill='white' stroke='black' stroke-width='0.5'/%3E%3C/svg%3E") 0 0, auto}
 #cloud-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
 #three-canvas{position:fixed;inset:0;z-index:1}
 #loading{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:#4a90d9}
@@ -24,9 +24,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:#4A7AB5;font-family:
 #home-btn{position:fixed;top:16px;left:16px;z-index:500;display:none}
 #home-btn.show{display:block}
 .xp-mini-window{background:#ECE9D8;border:2px solid #003087;border-radius:4px;box-shadow:2px 2px 0 #00000066}
-.xp-mini-titlebar{background:linear-gradient(180deg,#1f5fc7,#0a2fa3);color:#fff;font-size:10px;font-weight:bold;padding:3px 6px;display:flex;justify-content:space-between;align-items:center;letter-spacing:1px;border-radius:2px 2px 0 0}
+.xp-mini-titlebar{background:linear-gradient(180deg,#1f5fc7,#0a2fa3);color:#fff;font-size:10px;font-weight:bold;padding:3px 6px;display:flex;justify-content:space-between;align-items:center;letter-spacing:1px}
 .xp-mini-body{padding:6px 8px}
-.xp-btn{background:#c0c0c0;border-top:2px solid #fff;border-left:2px solid #fff;border-bottom:2px solid #555;border-right:2px solid #555;padding:4px 12px;font-family:'Courier New',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;display:block;width:100%;text-align:center}
+.xp-btn{background:#c0c0c0;border-top:2px solid #fff;border-left:2px solid #fff;border-bottom:2px solid #555;border-right:2px solid #555;padding:4px 12px;font-family:'Courier New',monospace;font-size:11px;cursor:pointer;letter-spacing:1px}
 .xp-btn:active{border-top:2px solid #555;border-left:2px solid #555;border-bottom:2px solid #fff;border-right:2px solid #fff;transform:translate(1px,1px)}
 #hint{position:fixed;bottom:50px;left:50%;transform:translateX(-50%);z-index:400;pointer-events:none}
 .hint-box{background:#ECE9D8;border:2px solid #003087;border-radius:4px;padding:6px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;box-shadow:2px 2px 0 #00000066;white-space:nowrap}
@@ -36,14 +36,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:#4A7AB5;font-family:
 .win.maximized .win-body{max-height:calc(100vh - 28px)!important;overflow-y:auto}
 @keyframes winpop{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
 .win-frame{background:#ECE9D8;border:2px solid #003087;border-radius:4px 4px 2px 2px;height:100%}
-.win-titlebar{background:linear-gradient(180deg,#1f5fc7,#0a2fa3);color:#fff;padding:4px 6px;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:bold;letter-spacing:1px;border-radius:2px 2px 0 0;text-transform:uppercase;user-select:none}
+.win-titlebar{background:linear-gradient(180deg,#1f5fc7,#0a2fa3);color:#fff;padding:4px 6px;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:bold;letter-spacing:1px;cursor:move}
 .win-controls{display:flex;gap:3px}
 .wc-btn{width:18px;height:16px;border:1px solid #fff4;font-size:9px;display:flex;align-items:center;justify-content:center;border-radius:2px;cursor:pointer;font-weight:bold}
 .wc-btn:active{transform:translate(1px,1px)}
 .wc-min{background:#e8c000}.wc-max{background:#00a000}.wc-close{background:#d9261c}
 .win-body{padding:10px;overflow:auto;max-height:70vh}
 #minimized-bar{position:fixed;bottom:0;left:0;right:0;height:36px;background:#c0c0c0;border-top:2px solid #fff;display:flex;align-items:center;padding:0 8px;gap:6px;z-index:400}
-.min-chip{background:#d4d0c8;border-top:1px solid #fff;border-left:1px solid #fff;border-bottom:1px solid #555;border-right:1px solid #555;padding:2px 10px;cursor:pointer;letter-spacing:1px;font-family:'Courier New',monospace;font-size:11px;white-space:nowrap}
+.min-chip{background:#d4d0c8;border-top:1px solid #fff;border-left:1px solid #fff;border-bottom:1px solid #555;border-right:1px solid #555;padding:2px 10px;cursor:pointer;letter-spacing:1px;font-family:'Courier New',monospace;font-size:10px}
 .proj-card{background:#fff;border:1px solid #aaa;padding:8px;margin-bottom:6px}
 .proj-card h4{font-size:12px;margin-bottom:2px;text-transform:uppercase;letter-spacing:1px}
 .proj-card p{font-size:10px;color:#555;margin-bottom:4px}
@@ -52,7 +52,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#4A7AB5;font-family:
 .photo-frame img{width:88px;height:88px;object-fit:cover;display:block;image-rendering:pixelated}
 .notepad{font-size:11px;line-height:1.8;flex:1}
 .notepad h3{font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
-.resume-btn{display:inline-block;margin-top:8px;background:#c0c0c0;border-top:2px solid #fff;border-left:2px solid #fff;border-bottom:2px solid #555;border-right:2px solid #555;padding:4px 10px;font-size:11px;font-family:'Courier New',monospace;text-decoration:none;color:#000;letter-spacing:1px}
+.resume-btn{display:inline-block;margin-top:8px;background:#c0c0c0;border-top:2px solid #fff;border-left:2px solid #fff;border-bottom:2px solid #555;border-right:2px solid #555;padding:4px 10px;font-size:11px;text-decoration:none;color:#000;cursor:pointer}
 .illus-explorer{display:flex;border:1px solid #aaa;background:#fff}
 .illus-sidebar{width:110px;background:#d4d0c8;border-right:1px solid #aaa;padding:6px;font-size:10px;flex-shrink:0}
 .illus-sidebar div{padding:3px 4px;cursor:pointer;letter-spacing:1px}
@@ -221,14 +221,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:#4A7AB5;font-family:
 <!-- Photo Viewer -->
 <div id="photo-viewer">
   <div style="background:#ECE9D8;border:2px solid #003087;border-radius:4px;box-shadow:4px 4px 0 #00000088;width:560px;max-width:95vw;font-family:'Courier New',monospace">
-    <div style="background:linear-gradient(180deg,#1f5fc7,#0a2fa3);color:#fff;padding:4px 8px;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:bold;letter-spacing:1px;border-radius:2px 2px 0 0">
+    <div style="background:linear-gradient(180deg,#1f5fc7,#0a2fa3);color:#fff;padding:4px 8px;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:bold;letter-spacing:1px;border-radius:4px 4px 0 0">
       <span>WINDOWS PICTURE AND FAX VIEWER</span>
       <div class="wc-btn wc-close" onclick="document.getElementById('photo-viewer').style.display='none'">✕</div>
     </div>
     <div style="background:#3a6ea5;display:flex;align-items:center;justify-content:center;height:300px;position:relative;overflow:hidden">
-      <button onclick="pvNav(-1)" style="position:absolute;left:8px;background:#c0c0c0;border-top:2px solid #fff;border-left:2px solid #fff;border-bottom:2px solid #555;border-right:2px solid #555;width:28px;height:48px;font-size:18px;cursor:pointer">‹</button>
+      <button onclick="pvNav(-1)" style="position:absolute;left:8px;background:#c0c0c0;border-top:2px solid #fff;border-left:2px solid #fff;border-bottom:2px solid #555;border-right:2px solid #555;width:40px;height:40px;cursor:pointer;font-size:18px">◀</button>
       <img id="pv-main" src="" style="max-height:280px;max-width:480px;object-fit:contain;border:2px solid #fff;transition:transform 0.2s">
-      <button onclick="pvNav(1)" style="position:absolute;right:8px;background:#c0c0c0;border-top:2px solid #fff;border-left:2px solid #fff;border-bottom:2px solid #555;border-right:2px solid #555;width:28px;height:48px;font-size:18px;cursor:pointer">›</button>
+      <button onclick="pvNav(1)" style="position:absolute;right:8px;background:#c0c0c0;border-top:2px solid #fff;border-left:2px solid #fff;border-bottom:2px solid #555;border-right:2px solid #555;width:40px;height:40px;cursor:pointer;font-size:18px">▶</button>
     </div>
     <div style="background:#d4d0c8;border-top:1px solid #aaa;padding:4px 8px;display:flex;gap:4px;align-items:center">
       <button class="xp-btn" onclick="pvZoomF(1.2)" style="padding:2px 8px">+</button>
@@ -245,7 +245,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#4A7AB5;font-family:
 <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
 <script>
-const GLB_URL='https://corsproxy.io/?https://raw.githubusercontent.com/cookiecrums009/sky-portfolio/main/portfolio.glb'
+const GLB_URL='https://raw.githubusercontent.com/cookiecrums009/My-portfolio/main/Untitled.glb'
 
 // ── Cloud canvas ──
 const cc=document.getElementById('cloud-canvas')
@@ -257,7 +257,7 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY})
 const clouds=Array.from({length:14},(_,i)=>({x:Math.random()*1.4-.2,y:Math.random()*.75,w:.14+Math.random()*.22,h:.055+Math.random()*.07,speed:.25+Math.random()*.45,alpha:.5+Math.random()*.4,layer:i%3}))
 let ct=0
 function drawCloud(x,y,w,h,a){ctx.save();ctx.globalAlpha=a;ctx.fillStyle='#fff';ctx.beginPath();ctx.ellipse(x,y,w*.5,h*.5,0,0,Math.PI*2);ctx.ellipse(x-w*.25,y+h*.15,w*.35,h*.4,0,0,Math.PI*2);ctx.ellipse(x+w*.25,y+h*.15,w*.35,h*.4,0,0,Math.PI*2);ctx.fill();ctx.restore()}
-function animC(){ct+=.0004;ctx.clearRect(0,0,cc.width,cc.height);const px=(mx/innerWidth-.5),py=(my/innerHeight-.5);clouds.forEach(c=>{const lp=[.02,.04,.07][c.layer];const ox=px*lp*cc.width,oy=py*lp*cc.height;const x=(((c.x+ct*c.speed*.1)%1.4)-.1)*cc.width+ox;const y=c.y*cc.height+oy;drawCloud(x,y,c.w*cc.width,c.h*cc.height,c.alpha)});requestAnimationFrame(animC)}
+function animC(){ct+=.0004;ctx.clearRect(0,0,cc.width,cc.height);const px=(mx/innerWidth-.5),py=(my/innerHeight-.5);clouds.forEach(c=>{const lp=[.02,.04,.07][c.layer];const ox=px*lp*cc.width,oy=py*lp*cc.height;c.x+=c.speed*.0001;if(c.x>1.2)c.x=-0.3;drawCloud(c.x*cc.width+ox,c.y*cc.height+oy,c.w*cc.width,c.h*cc.height,c.alpha)});requestAnimationFrame(animC)}
 animC()
 
 // ── Loading screen ──
@@ -266,8 +266,8 @@ lc.width=innerWidth;lc.height=innerHeight
 const lx=lc.getContext('2d')
 const sg=lx.createLinearGradient(0,0,0,lc.height);sg.addColorStop(0,'#4a90d9');sg.addColorStop(1,'#7ab8f5')
 lx.fillStyle=sg;lx.fillRect(0,0,lc.width,lc.height)
-[[80,60,14],[220,40,10],[380,80,12],[520,50,16],[680,65,10],[150,110,8],[440,100,9]].forEach(([x,y,s])=>{lx.fillStyle='#fff';[[1,1],[2,1],[3,1],[4,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[1,3],[2,3],[3,3],[4,3]].forEach(([bx,by])=>lx.fillRect(x+bx*s,y+by*s,s,s))})
-[[50,30],[120,80],[200,20],[300,70],[420,25],[500,90],[620,40],[700,75],[160,140],[350,130]].forEach(([x,y],i)=>{const s=document.createElement('div');s.className='load-star '+(i%2===0?'gold':'white');s.style.cssText=`left:${x}px;top:${y}px;animation-delay:${(i*.13).toFixed(2)}s`;s.textContent=i%3===0?'✦':'+';document.getElementById('loading').appendChild(s)})
+[[80,60,14],[220,40,10],[380,80,12],[520,50,16],[680,65,10],[150,110,8],[440,100,9]].forEach(([x,y,s])=>{lx.fillStyle='#fff';[[1,1],[2,1],[3,1],[4,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[1,3],[2,3],[3,3],[4,3]].forEach(([dx,dy])=>{lx.fillRect(x+dx*2,y+dy*2,2,2)})})
+[[50,30],[120,80],[200,20],[300,70],[420,25],[500,90],[620,40],[700,75],[160,140],[350,130]].forEach(([x,y],i)=>{const s=document.createElement('div');s.className='load-star '+(i%2===0?'gold':'white');s.style.left=x+'px';s.style.top=y+'px';s.style.animationDelay=(i*0.1)+'s';document.getElementById('load-bg').parentElement.appendChild(s)})
 
 // ── Three.js ──
 const scene=new THREE.Scene()
@@ -446,7 +446,7 @@ renderIllus('all')
 window.filterIllus=(cat,el)=>{document.querySelectorAll('.illus-sidebar div').forEach(d=>d.classList.remove('sel'));el.classList.add('sel');renderIllus(cat)}
 
 // ── GD grid ──
-const gdData=[{src:'https://placehold.co/100x100/cc4466/fff?text=GD1',name:'poster_01.jpg'},{src:'https://placehold.co/100x100/4466cc/fff?text=GD2',name:'wave_mag.png'},{src:'https://placehold.co/100x100/44cc88/fff?text=GD3',name:'dreamland.psd'},{src:'https://placehold.co/100x100/cc8844/fff?text=GD4',name:'cat_flyer.jpg'}]
+const gdData=[{src:'https://placehold.co/100x100/cc4466/fff?text=GD1',name:'poster_01.jpg'},{src:'https://placehold.co/100x100/4466cc/fff?text=GD2',name:'wave_mag.png'},{src:'https://placehold.co/100x100/66cc44/fff?text=GD3',name:'sticker_set.png'},{src:'https://placehold.co/100x100/cc66cc/fff?text=GD4',name:'branding.png'}]
 const gdGrid=document.getElementById('gd-grid')
 gdData.forEach(g=>{const d=document.createElement('div');d.className='gd-item';d.innerHTML=`<img src="${g.src}"><span>${g.name}</span>`;gdGrid.appendChild(d)})
 
